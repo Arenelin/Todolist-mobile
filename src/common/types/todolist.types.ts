@@ -24,8 +24,10 @@ export type UpdateTodolistArgs = {
 }
 export type UpdateTodolistResponse = GeneralResponse<{ item: TodolistEntity }>
 
-export const editTitleSchema = z.object({
-    title: z.string().min(1, 'Title is required'),
+export const addEntitySchema = z.object({
+    title: z.string()
+        .min(1, 'Title is required')
+        .max(100, 'The title length must not exceed 100 characters.'),
 });
 
-export type UpdateTodolistForm = z.infer<typeof editTitleSchema>;
+export type AddEntityForm = z.infer<typeof addEntitySchema>;

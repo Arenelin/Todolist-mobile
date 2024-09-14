@@ -20,4 +20,4 @@ export type InputProps = {
     type?: InputType;
 } & ComponentPropsWithoutRef<typeof RNTextInput>;
 
-export type Props = Omit<ComponentPropsWithoutRef<typeof RNTextInput>, keyof InputProps> & InputProps;
+export type InputComponentProps = Omit<ComponentPropsWithoutRef<typeof RNTextInput>, keyof InputProps> & InputProps;

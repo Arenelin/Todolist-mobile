@@ -1,8 +1,8 @@
 import {useInput} from './useInput';
 import {Text, TextInput, View} from "react-native";
-import {Props} from "./types";
+import {InputComponentProps} from "common/types/components";
 
-export const Input = (props: Props) => {
+export const Input = (props: InputComponentProps) => {
     const {
         disabled,
         errorMessage,

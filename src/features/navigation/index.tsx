@@ -1,7 +1,7 @@
-import {TodolistList} from "features/todolistsList";
+import {TodolistsList} from "features/todolistsList";
 import {Login} from "features/login";
 import {useMeQuery} from "services";
-import {ResponseResultCodes} from "types";
+import {ResponseResultCodes} from "common/types";
 import {Loader, ScreenTitle} from "common/components";
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -26,7 +26,7 @@ export const Navigation = () => {
                     {isAuth
                         ?
                         <>
-                            <Stack.Screen name="todolist-list" component={TodolistList}/>
+                            <Stack.Screen name="Todolists" component={TodolistsList}/>
                         </>
                         :
                         <>

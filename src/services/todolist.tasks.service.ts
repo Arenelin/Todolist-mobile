@@ -3,12 +3,13 @@ import {APIEndpoint} from "common/constants";
 import {
     CreateTaskArgs,
     CreateTaskResponse,
-    DeleteTaskArgs, DeleteTaskResponse, GetTaskArgs, GetTasksResponse,
-    TaskEntity,
+    DeleteTaskArgs,
+    DeleteTaskResponse,
+    GetTaskArgs,
+    GetTasksResponse,
     UpdateTaskArgs,
     UpdateTaskResponse
-} from "types";
-
+} from "common/types";
 
 export const taskApi = baseApi.injectEndpoints({
     endpoints: builder => {

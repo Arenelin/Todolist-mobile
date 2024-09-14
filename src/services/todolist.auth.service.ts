@@ -1,7 +1,6 @@
 import {baseApi} from "./todolistBaseApi";
-import {LoginArgs, LoginResponse, LogoutResponse, MeResponse} from "types/auth.types";
-import {APIEndpoint} from "../common/constants";
-
+import {APIEndpoint} from "common/constants";
+import {LoginArgs, LoginResponse, LogoutResponse, MeResponse} from "common/types";
 
 export const authApi = baseApi.injectEndpoints({
     endpoints: builder => {

@@ -1,24 +1,11 @@
-import {ActivityIndicator, View, StyleSheet} from "react-native";
+import {ActivityIndicator, View} from "react-native";
+import s from './styles'
 
-type Props = {}
-
-export const Loader = ({}: Props) => {
+export const Loader = () => {
 
     return (
-        <View style={[styles.container, styles.horizontal]}>
+        <View style={[s.container, s.horizontal]}>
             <ActivityIndicator size="large" color="#7f5af0" />
         </View>
     );
 };
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#16161a',
-    },
-    horizontal: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: 10,
-    },
-});

@@ -1,34 +1,13 @@
-import {ComponentPropsWithoutRef} from 'react'
+import {Pressable} from "react-native";
+import s from './styles'
+import {ButtonComponentProps, ButtonVariant} from "common/types/components";
 
-import {Pressable, StyleSheet} from "react-native";
+export const Button = (props: ButtonComponentProps) => {
+    const {style, fullWidth, variant = ButtonVariant.Primary, ...rest} = props
+    const buttonStyle = [s.button, s[variant], fullWidth && s.fullWidth];
 
-type ButtonVariant = 'primary' | 'secondary'
-type ButtonProps = {
-    fullWidth?: boolean
-    variant?: ButtonVariant
-} & ComponentPropsWithoutRef<typeof Pressable>
-export const Button = (props: ButtonProps) => {
-    const {style, fullWidth, variant = 'primary', ...rest} = props
-    return <Pressable style={[s.button, s[variant], fullWidth && s.fullWidth]} {...rest}/>
+    return <Pressable style={(state) => [
+        ...(Array.isArray(buttonStyle) ? buttonStyle : [buttonStyle]),
+        typeof style === 'function' ? style(state) : style]}{...rest}
+    />
 }
-
-const s = StyleSheet.create({
-    button: {
-        cursor: 'pointer',
-        gap: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 6,
-        paddingHorizontal: 28,
-        borderRadius: 4,
-    },
-    primary: {
-        backgroundColor: '#7f5af0',
-    },
-    secondary: {
-        backgroundColor: '#94A1B2',
-    },
-    fullWidth: {
-        width: '100%',
-    },
-});

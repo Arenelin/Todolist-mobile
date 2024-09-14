@@ -1,5 +1,4 @@
 import {GeneralResponse} from "./generalResponse";
-import {z} from "zod";
 
 export type TaskEntity = {
     description: string
@@ -13,10 +12,12 @@ export type TaskEntity = {
     order: number
     addedDate: Date
 }
+
 export enum TaskStatus {
     NotCompleted = 0,
     Completed = 1
 }
+
 export type GetTasksResponse = {
     items: TaskEntity[]
     totalCount: number
@@ -49,9 +50,3 @@ export type UpdateTaskArgs = {
     deadline?: Date
 }
 export type UpdateTaskResponse = GeneralResponse<{ item: TaskEntity }>
-
-export const addEntitySchema = z.object({
-    title: z.string().min(1, 'Title is required'),
-});
-
-export type AddEntityForm = z.infer<typeof addEntitySchema>;

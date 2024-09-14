@@ -1,54 +1,31 @@
-import {FlatList, StyleSheet, Text, View} from "react-native";
+import {FlatList, Text, View} from "react-native";
 import {Button, Loader} from "common/components";
 import {Todolist} from "./ui/Todolist";
-import {AddTodolistForm} from "./ui/AddTaskForm";
+import {AddTodolistForm} from "./ui/AddTodolistForm";
 import {useGetTodolistsQuery, useLogoutMutation} from "services";
+import {ButtonVariant} from "common/types/components";
+import s from './styles'
 
-
-export const TodolistList = () => {
+export const TodolistsList = () => {
     const {data: todolists, isLoading} = useGetTodolistsQuery()
     const [logout] = useLogoutMutation()
 
     return (
         <View style={s.container}>
-            <AddTodolistForm />
+            <AddTodolistForm/>
             <View style={s.logoutButtonContainer}>
-                <Button variant={'secondary'} onPress={() => logout()}>
+                <Button variant={ButtonVariant.Secondary} onPress={() => logout()}>
                     <Text style={s.logoutButtonCaption}>Logout</Text>
                 </Button>
             </View>
-            {isLoading ? <Loader/> : <>
-                <FlatList
+            {isLoading
+                ? <Loader/>
+                : <FlatList
                     data={todolists}
-                    renderItem={({item}) =>
-                        <Todolist todolist={item}/>
-                    }
-                    keyExtractor={item => item.id.toString()}
+                    renderItem={({item}) => <Todolist todolist={item}/>}
+                    keyExtractor={item => item.id}
                 />
-            </>}
+            }
         </View>
     );
-};
-
-
-const s = StyleSheet.create({
-    container: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        backgroundColor: '#16161a',
-        paddingTop: 50,
-        position: 'relative'
-    },
-    logoutButtonContainer: {
-        position: 'absolute',
-        top: 10,
-        right: 10
-    },
-    logoutButtonCaption: {
-        fontSize: 22,
-        color: '#ffffff',
-    }
-})
-
+}

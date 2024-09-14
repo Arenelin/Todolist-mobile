@@ -1,13 +1,12 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Text, View} from "react-native";
 import {Controller, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {AuthForm, authSchema} from "types";
+import {AuthForm, authSchema} from "common/types";
 import {useLoginMutation} from "services";
-
-import {Input} from "common/components";
+import {Button, Input} from "common/components";
 import {Eye, EyeOff} from "lucide-react-native";
-import {InputType} from "common/components/Input/types";
-
+import {InputType} from "common/types/components";
+import s from './styles'
 
 export const Login = () => {
     const {
@@ -47,48 +46,16 @@ export const Login = () => {
                             value={value}
                             type={InputType.password}
                             errorMessage={errors?.password?.message}
-                            iconEnd={<Eye color={'white'}/>}
-                            switchableIconEnd={<EyeOff color={'white'}/>}
+                            iconEnd={<Eye color={'#ffffff'}/>}
+                            switchableIconEnd={<EyeOff color={'#ffffff'}/>}
                         />
                     )}
                     name="password"
                 />
-                <TouchableOpacity style={s.button} onPress={handleSubmit(login)} activeOpacity={0.5}>
+                <Button style={s.button} onPress={handleSubmit(login)}>
                     <Text style={s.buttonCaption}>Sign In</Text>
-                </TouchableOpacity>
+                </Button>
             </View>
         </View>
     );
 };
-
-const s = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#16161a',
-        marginHorizontal: 'auto',
-        flex: 1
-    },
-    form: {
-        rowGap: 20,
-        maxWidth: 320,
-        width: '100%',
-        marginHorizontal: 'auto',
-        marginVertical: 0,
-        height: '100%',
-        justifyContent: 'center',
-        flex: 1
-    },
-    button: {
-        backgroundColor: '#7f5af0',
-        alignItems: 'center',
-        borderRadius: 12,
-        paddingVertical: 12,
-        marginTop: 12
-    },
-    buttonCaption: {
-        color: '#fffffe',
-        fontWeight: '500',
-        fontSize: 18
-    },
-})

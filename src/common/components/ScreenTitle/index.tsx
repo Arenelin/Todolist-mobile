@@ -1,4 +1,5 @@
-import {Text, StyleSheet} from "react-native";
+import {Text, View} from "react-native";
+import s from './styles'
 
 type Props = {
     title: string
@@ -7,16 +8,11 @@ type Props = {
 export const ScreenTitle = ({title}: Props) => {
 
     return (
-        <Text style={s.title}>
-            {title}
-        </Text>
+        <View style={s.container}>
+            <Text style={s.title}>
+                {title}
+            </Text>
+        </View>
+
     );
 };
-
-const s = StyleSheet.create({
-    title: {
-        color: '#fffffe',
-        fontSize: 20,
-        fontWeight: '700'
-    }
-})

@@ -5,9 +5,8 @@ import {
     TodolistEntity,
     UpdateTodolistArgs,
     UpdateTodolistResponse
-} from "types/todolist.types";
-import {APIEndpoint} from "../common/constants";
-
+} from "common/types";
+import {APIEndpoint} from "common/constants";
 
 export const todolistApi = baseApi.injectEndpoints({
     endpoints: builder => {
