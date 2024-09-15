@@ -66,7 +66,7 @@ export const Task = ({item, todolistId}: Props) => {
                         defaultValue={item.title}
                     />
                     : <Text
-                        onPress={changeEditMode}
+                        onLongPress={changeEditMode}
                         style={[s.taskTitle, isCompletedTask && s.taskIsDoneTitle]}>
                         {item.title}
                     </Text>}
